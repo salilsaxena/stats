@@ -1,0 +1,81 @@
+#create an array and then use it in the end with function(mode)
+#following are some samples
+data =  [1,2,2,3,4,5,4,3,2,3]
+#data = [1,2,3,4,5]
+def arr_copy(a):
+    temp = []
+    for i in a:
+        temp+=[i]
+    return temp
+def zero(a):
+    l = len(a)
+    count=0
+    for i in a:
+        if(i==0):
+            count+=1
+    if(count==l):
+        return -1
+    else:
+        return 0
+def max_position(a):
+    max_pos = []
+    maximum = max(a)
+    for i in range(0,len(a)):
+        if(maximum==a[i]):
+            max_pos+=[i]
+    return max_pos
+def unique(a):
+    un=[]
+    flag = 1
+    for i in a:
+        flag = 1
+        if i not in un:
+            un+=[i]
+    return un
+def mode(a):
+    index_f=[]
+    inidi=0
+    mode_1=0
+    maximum=0
+    unique_ele=[]
+    temp_index_f=[]
+    unique_ele = unique(a)
+    for i in unique_ele:
+        maximum=0
+        for j in a:
+            if(i==j):
+                maximum+=1
+        index_f+=[maximum]
+        temp_index_f = arr_copy(index_f)
+    fin_mode_index = max_position(index_f)
+    print(a,":")
+    print("-------------------------")
+    print("mode no. 1:")
+    for i in fin_mode_index:
+        print(unique_ele[i],end=",")
+        index_f[i] = 0
+    print()
+    print("-------------------------")
+    inp = 'y'
+    inp = input("Do you want more modes: ")
+    inp= inp.lower()
+    m = 2
+    while(inp[0]=='y'):
+        if(zero(index_f)==-1):
+            inp='n'
+            print("Sorry no more modes")
+            break
+        else:
+            fin_mode_index = max_position(index_f)
+            print("-------------------------")
+            print("mode no. "+str(m)+":",sep=" ")
+            for i in fin_mode_index:
+                print(unique_ele[i],end=",")
+                index_f[i] = 0
+            m+=1
+            print()
+            print("-------------------------")
+        inp = input("Do you want more modes: ")
+        inp= inp.lower()
+    index_f = temp_index_f # how many times did each element occur
+mode(data)
