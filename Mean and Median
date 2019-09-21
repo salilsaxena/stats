@@ -1,0 +1,16 @@
+def mean(data):
+    sum=  0
+    for i in data:
+        sum+=i
+    return sum/len(data)
+   
+ def median(data):
+    l = len(data)
+    m = 0
+    if(l%2==0):
+        n = (int)((l-1)/2)
+        m = n+1
+        return (data[m]+data[n])/2
+    else:
+        m = (int)(l/2)
+        return data[m]
