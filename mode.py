@@ -4,6 +4,7 @@ import numpy as np
     Functions that I will be using:
 """
 d=[3, 3, 6, 9, 16, 16, 16, 27, 27, 37, 48]
+print(d)
 def uni(a):
     x=[]
     for i in a:
